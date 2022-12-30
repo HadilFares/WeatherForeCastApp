@@ -5,7 +5,7 @@ namespace WeatherForeCastApp.Repositories
     public interface IForecastRepository
     {
         WeatherResponse GetForecast(string city);
-        WeatherResponse GetForecastPosition(double longitude, double latitude);
+        WeatherResponse GetForecastPosition(double latitude, double longitude);
         
     }
 }

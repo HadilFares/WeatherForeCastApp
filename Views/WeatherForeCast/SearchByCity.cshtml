@@ -17,9 +17,13 @@
         <p class="info-txt"></p>
         <div class="content">
           <input asp-for="CityName" type="text" spellcheck="false" placeholder="Enter city name"/>
-         
+          <br />
+             <span asp-validation-for="CityName" class="text-danger"></span>
+             <br/>
+           <button asp-controller="WeatherForecast" asp-action="SearchByCity" class="btn btn-primary">Search</button>
+
           <div class="separator"></div>
-          <button  id="locationButton" type="button" class="btn btn-default" onclick="getLocation()">Get Device Location</button>
+             <button asp-controller="WeatherForeCast" asp-action="Position" type="button" class="btn btn-default" onclick="getLocation()">Get Device Location</button>
         </div>
         </div>
       </section>
@@ -35,13 +39,13 @@
 	};
 
 	function useLocation(position) {
-		window.location.replace('?longitude=' + position.coords.longitude + '&latitude=' + position.coords.latitude);
-        console.log("*****************************************");
-        console.log(position);
-        CallService(position.coords.longitude,position.coords.latitude)
+            window.location.replace('/WeatherForeCast/Position?latitude=' + position.coords.latitude + '&longitude=' + position.coords.longitude);
+       // console.log("*****************************************");
+       // console.log(position);
+        //CallService(position.coords.longitude,position.coords.latitude)
 
 	};
-  /*  function CallService(longitude,latitude) {
+ /*  function CallService(longitude,latitude) {
         var jsonObject = {
                 "longitude" : longitude,
                 "latitude":latitude
@@ -58,7 +62,9 @@
             alert('Error occured');
         }
     });
-  */
+
+        
+ */
 </script>
 </body>
    </html>

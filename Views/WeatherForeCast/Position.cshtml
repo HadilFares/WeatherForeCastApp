@@ -1,0 +1,53 @@
+﻿@model WeatherForeCastApp.Models.City
+
+
+@{
+    ViewData["Title"] = "City";
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+
+    <div class="xx">
+        <a href="@Url.Action("SearchByCity", "WeatherForecast")" style="margin-left:30px ;margin-top:-480px">
+            <img src="~/arrow.svg" alt="" class="position"></img>
+        </a>
+        <section class="weather-part">
+
+            @* <img src="@Model.ImagePath" alt="Weather Icon" style="width: 28rem;">*@
+            <div class="temp">
+                <span class="numb">@Model.Temp</span>
+                <span class="deg">°</span>C
+            </div>
+            <div class="weather">@Model.Weather</div>
+            <div class="location">
+                <i class='bx bx-map'></i>
+                <span>@Model.Name</span>
+            </div>
+            <div class="bottom-details">
+                <div class="column humidity">
+                    <img src="~/air.svg" alt=""></img>
+                    <div class="details">
+
+                        <span class="numb-2">@Model.Wind</span>
+
+                        <p>Wind</p>
+                    </div>
+                </div>
+                <div class="column humidity">
+                    <i class='bx bxs-droplet-half'></i>
+                    <div class="details">
+                        <span>@Model.Humidity</span>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+</body>
+</html>

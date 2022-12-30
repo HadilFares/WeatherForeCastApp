@@ -8,7 +8,7 @@ namespace WeatherForeCastApp.Models
         [Display(Name = "City :")]
         public string Name { get; set; }
         [Display(Name = "Temperature :")]
-        public int Temp { get; set; }
+        public float Temp { get; set; }
         [Display(Name ="Humidity:")]
         public int Humidity { get; set; }
         [Display(Name ="Pressure:")]
@@ -26,7 +26,7 @@ namespace WeatherForeCastApp.Models
                 return $"http://openweathermap.org/img/wn/{Icon}@2x.png";
             }
         }
-
+        
 
 
     }
