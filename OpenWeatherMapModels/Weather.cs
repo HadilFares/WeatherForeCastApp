@@ -11,7 +11,7 @@
         {
             get
             {
-                return $"http://openweathermap.org/img/wn/{Icon}@2x.png";
+                return $"http://openweathermap.org/img/wn/{Icon}@1x.png";
             }
         }
     }

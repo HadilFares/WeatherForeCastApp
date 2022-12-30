@@ -40,7 +40,8 @@ namespace WeatherForeCastApp.Controllers
                 viewModel.Name = weatherResponse.Name;
                 viewModel.Humidity = weatherResponse.Main.Humidity;
                 viewModel.Pressure = weatherResponse.Main.Pressure;
-                viewModel.Temp = weatherResponse.Main.Temp;
+           
+                viewModel.Temp = (int)((weatherResponse.Main.Temp -32)/1.8);
                 viewModel.Weather = weatherResponse.Weather[0].Main;
                 viewModel.Wind = weatherResponse.Wind.Speed;
                 viewModel.Icon = weatherResponse.Weather[0].Icon;
@@ -48,6 +49,31 @@ namespace WeatherForeCastApp.Controllers
                 
             }
             return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult Position(Position data)
+        {
+            double latitude = data.latitude;
+            double longitude  = data.longitude;
+            
+            
+            WeatherResponse weatherResponse = _forecastRepository.GetForecastPosition(latitude, longitude);
+            City viewModel = new City();
+
+            if (weatherResponse != null)
+            {
+                viewModel.Name = weatherResponse.Name;
+                viewModel.Humidity = weatherResponse.Main.Humidity;
+                viewModel.Pressure = weatherResponse.Main.Pressure;
+           
+                viewModel.Temp = (int)((weatherResponse.Main.Temp -32)/1.8);
+                viewModel.Weather = weatherResponse.Weather[0].Main;
+                viewModel.Wind = weatherResponse.Wind.Speed;
+                viewModel.Icon = weatherResponse.Weather[0].Icon;
+               
+                
+            }
+            return View("City",viewModel);
         }
     }
 }

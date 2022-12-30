@@ -1,52 +1,53 @@
 ﻿@model WeatherForeCastApp.Models.City
 
+
 @{
     ViewData["Title"] = "City";
 }
 
+<html>
+    <head>
+         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+       <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+        </head>
+        <body>
+       
 
-<div class="container">
-
-    <div class="container">
-
-        <div class="form-group col-md-offset-3 col-md-5">
-            
-            <h2>Forecast for the selected city</h2>
-
-            <label asp-for="Name"></label>
-            <span class="badge alert-primary">@Model.Name</span>
-            <br />
-
-            <label asp-for="Temp"></label>
-            <span class="badge alert-primary" >@Model.Temp °F</span>
-            <br />
-
-            <label asp-for="Humidity"></label>
-            <span class="badge alert-primary">@Model.Humidity %</span>
-            <br />
-
-            <label asp-for="Pressure"></label>
-            <span class="badge alert-primary">@Model.Pressure Hpa</span>
-            <br />
-
-            <label asp-for="Wind"></label>
-            <span class="badge alert-primary">@Model.Wind MPH</span>
-            <br />
-
-            <label asp-for="Weather"></label>
-            <span class="badge alert-primary">@Model.Weather</span>
-
-            <img src="@Model.ImagePath" />
-
-
-                <form method="get">
-                    <button asp-controller="WeatherForecast" asp-action="SearchByCity" class="btn btn-success">Return</button>
-                </form>
-
-            </div>
-         
-
+            <div class="xx">
+     <a href ="@Url.Action("SearchByCity", "WeatherForecast")"style="margin-left:30px ;margin-top:-480px" >
+       <img src="~/arrow.svg" alt="" class="position"></img>
+       </a>
+    <section class="weather-part">
+       
+        <img src="@Model.ImagePath" alt="Weather Icon" style="width: 28rem;" >
+        <div class="temp">
+          <span class="numb">@Model.Temp</span>
+          <span class="deg">°</span>C
         </div>
-
-</div>
-
+        <div class="weather">@Model.Weather</div>
+        <div class="location">
+          <i class='bx bx-map'></i>
+          <span>@Model.Name</span>
+        </div>
+        <div class="bottom-details">
+          <div class="column humidity">
+              <img src="~/air.svg" alt=""></img>
+            <div class="details">
+           
+                <span class="numb-2">@Model.Wind</span>
+              
+              <p>Wind</p>
+            </div>
+          </div>
+          <div class="column humidity">
+            <i class='bx bxs-droplet-half'></i>
+            <div class="details">
+              <span>@Model.Humidity</span>
+              <p>Humidity</p>
+            </div>
+          </div>
+        </div>
+      </section>
+   <div>
+ </body>
+ </html>

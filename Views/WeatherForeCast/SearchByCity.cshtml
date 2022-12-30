@@ -2,25 +2,63 @@
 @{
     ViewData["Title"] = "SearchByCity";
 }
-<div class="container">
 
+<html>
+    <head>
+       <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+       <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+        </head>
+        <body>
     <form method="post">
-
-        <div class="container">
-            <div class="form-group col-md-offset-3 col-md-5">
-                <h2>Search the forecast in a city</h2>
-                <label asp-for="CityName" style="font-family: Arial"></label>
-                <input asp-for="CityName" class="form-control" />
-                <span asp-validation-for="CityName" class="text-danger"></span>
-            </div>
+  <div class="wrapper">
+    
+      <header><i class='bx bx-left-arrow-alt'></i>Weather App</header>
+      <section class="input-part">
+        <p class="info-txt"></p>
+        <div class="content">
+          <input asp-for="CityName" type="text" spellcheck="false" placeholder="Enter city name"/>
+         
+          <div class="separator"></div>
+          <button  id="locationButton" type="button" class="btn btn-default" onclick="getLocation()">Get Device Location</button>
         </div>
-        <div class="container">
-            <div class="form-group col-md-offset-3 col-md-5">
-                <button asp-controller="WeatherForeCast" asp-action="SearchByCity" class="btn btn-primary">Search</button>
-
-
-            </div>
         </div>
-    </form>
+      </section>
+  
+   </div>
+     </form>
+   
+<script type="text/javascript">
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(useLocation);
+		}
+	};
 
-</div>
+	function useLocation(position) {
+		window.location.replace('?longitude=' + position.coords.longitude + '&latitude=' + position.coords.latitude);
+        console.log("*****************************************");
+        console.log(position);
+        CallService(position.coords.longitude,position.coords.latitude)
+
+	};
+  /*  function CallService(longitude,latitude) {
+        var jsonObject = {
+                "longitude" : longitude,
+                "latitude":latitude
+                
+            };
+    $.ajax({
+        url: '@Url.Action("Position", "WeatherForeCast")',
+        type: 'POST',
+        dataType: 'json',
+        cache: false,
+       data: JSON.stringify(jsonObject),
+        
+        error: function () {
+            alert('Error occured');
+        }
+    });
+  */
+</script>
+</body>
+   </html>

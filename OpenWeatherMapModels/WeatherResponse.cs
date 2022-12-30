@@ -2,7 +2,7 @@
 {
     public class WeatherResponse
     {
-        public static string MapsURL { get; internal set; }
+       
         public Coord Coord { get; set; }
         public List<Weather> Weather { get; set; }
         public string Base { get; set; }
@@ -17,8 +17,7 @@
         public string Name { get; set; }
         public int Cod { get; set; }
         //public string Icon { get; set; }
-        public string MapURL { get; set; }
-        public string MapsKey { get; set; }
+        
 
     }
 }

@@ -8,7 +8,7 @@ namespace WeatherForeCastApp.Models
         [Display(Name = "City :")]
         public string Name { get; set; }
         [Display(Name = "Temperature :")]
-        public float Temp { get; set; }
+        public int Temp { get; set; }
         [Display(Name ="Humidity:")]
         public int Humidity { get; set; }
         [Display(Name ="Pressure:")]
